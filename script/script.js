@@ -19,7 +19,7 @@ for (const btn of allBtn) {
         div1.appendChild(p1);
         const div2 = document.createElement('div');
         const p2 = document.createElement('p');
-        p2.innerText = 500;
+        p2.innerText = 550;
         div2.appendChild(p2);
         div0.appendChild(div);
         div0.appendChild(div1);
@@ -56,10 +56,10 @@ function selectedSit(bgId){
    const totalFinalSit = totalSit + 1;
    setInnerText('total-sit', totalFinalSit);
    const totalPrice = textToIntegerNumber('total-price');
-   const totalFinalPice = totalPrice + 500;
+   const totalFinalPice = totalPrice + 550;
    setInnerText('total-price', totalFinalPice);
    const grandTotal = textToIntegerNumber('grand-total');
-   const grandFinal = grandTotal + 500;
+   const grandFinal = grandTotal + 550;
    setInnerText('grand-total', grandFinal);
 
 
