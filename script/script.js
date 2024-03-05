@@ -1,43 +1,47 @@
 const allBtn = document.getElementsByClassName('all-btn');
 let selectedSits = 1;
-
+const selectedSeats = new Set();
 for (const btn of allBtn) {
     btn.addEventListener("click", function (event) {
+        const seat = event.target.innerText;
+        if(!selectedSeats.has(seat)){
+            if (selectedSits <= 4) {
 
-        if (selectedSits <= 4) {
-
-            console.log(event.target.innerText);
-            const selectedContainer = document.getElementById("append-div");
-            const div0 = document.createElement("div");
-            const div = document.createElement('div');
-            const p = document.createElement('p');
-            p.innerText = event.target.innerText;
-            div.appendChild(p);
-            const div1 = document.createElement('div');
-            const p1 = document.createElement('p');
-            p1.innerText = "Economy";
-            div1.appendChild(p1);
-            const div2 = document.createElement('div');
-            const p2 = document.createElement('p');
-            p2.innerText = 550;
-            div2.appendChild(p2);
-            div0.appendChild(div);
-            div0.appendChild(div1);
-            div0.appendChild(div2);
-            div0.classList.add('flex');
-            div0.classList.add('justify-between');
-            selectedContainer.appendChild(div0);
-            selectedSit(event.target.innerText);
-            selectedSits++;
-            if(selectedSits === 5){
-                enableApplyButton();
+                console.log(event.target.innerText);
+                const selectedContainer = document.getElementById("append-div");
+                const div0 = document.createElement("div");
+                const div = document.createElement('div');
+                const p = document.createElement('p');
+                p.innerText = event.target.innerText;
+                div.appendChild(p);
+                const div1 = document.createElement('div');
+                const p1 = document.createElement('p');
+                p1.innerText = "Economy";
+                div1.appendChild(p1);
+                const div2 = document.createElement('div');
+                const p2 = document.createElement('p');
+                p2.innerText = 550;
+                div2.appendChild(p2);
+                div0.appendChild(div);
+                div0.appendChild(div1);
+                div0.appendChild(div2);
+                div0.classList.add('flex');
+                div0.classList.add('justify-between');
+                selectedContainer.appendChild(div0);
+                selectedSit(event.target.innerText);
+                selectedSits++;
+                event.target.removeEventListener('click', arguments.callee);
+                if(selectedSits === 5){
+                    enableApplyButton();
+                }
+                
             }
-            
+            else {
+                alert("You can select only 4 seats");
+            }
         }
-
-
-        else {
-            alert("You can select only 4 seats");
+        else{
+            alert("Sit Already Selected");
         }
 
 
@@ -81,7 +85,7 @@ function toCheckValidCoupon() {
         const parentOfCoupon = document.getElementById('parent-of-coupon');
         parentOfCoupon.classList.add("hidden");
         const totalPrice = textToIntegerNumber('total-price');
-        const totalFinalPice = totalPrice * 0.75;
+        const totalFinalPice = totalPrice * 0.85;
         setInnerText('grand-total', totalFinalPice);
     }
     else if (couponInputValue === "Couple 20") {
